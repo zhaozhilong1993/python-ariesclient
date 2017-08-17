@@ -15,14 +15,11 @@
 
 from kingclient.common import http
 from kingclient.v1 import services
-from kingclient.v1 import orders
-from kingclient.v1 import prices
 from kingclient.v1 import accounts
 
 
 class Client(object):
     """Client for the King v1 API.
-
     :param string endpoint: A user-supplied endpoint URL for the king
                             service.
     :param string token: Token for authentication.
@@ -34,6 +31,4 @@ class Client(object):
         """Initialize a new client for the King v1 API."""
         self.http_client = http._construct_http_client(*args, **kwargs)
         self.services = services.ServiceManager(self.http_client)
-        self.orders = orders.OrderManager(self.http_client)
-        self.prices = prices.PriceManager(self.http_client)
         self.accounts = accounts.AccountManager(self.http_client)
